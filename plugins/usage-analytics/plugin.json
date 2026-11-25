@@ -1,0 +1,19 @@
+{
+  "name": "usage-analytics",
+  "displayName": "Usage Analytics",
+  "version": "0.1.0",
+  "description": "Explore local token usage, cache efficiency, daily trends and request records.",
+  "icon": "icon.svg",
+  "engines": { "cage": ">=0.2.0" },
+  "kind": "guest",
+  "permissions": [],
+  "categories": ["developer", "system"],
+  "contributes": {
+    "mcpServers": [
+      { "id": "analytics", "command": ["python3", "-B", "server.py"] }
+    ],
+    "views": [
+      { "id": "analytics", "title": "Usage Analytics", "icon": "icon.svg", "entry": "view/index.html", "server": "analytics" }
+    ]
+  }
+}

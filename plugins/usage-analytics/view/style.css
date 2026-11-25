@@ -1,0 +1,96 @@
+:root {
+  color-scheme: light;
+  --paper: #f7f8f5;
+  --ink: #283430;
+  --strong: #17241f;
+  --muted: #586660;
+  --line: #dce3de;
+  --chrome: #fff;
+  --input: #fff;
+  --hover: #eef4ef;
+  --focus: #24746c;
+  --danger: #ae3535;
+  --series-input: #276bc2;
+  --series-output: #7752bd;
+  --series-read: #158277;
+  --series-write: #ad610c;
+  font: 14px/1.45 system-ui, sans-serif;
+}
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --paper: #19211e;
+  --ink: #d9e4df;
+  --strong: #f3f8f5;
+  --muted: #aebdb5;
+  --line: #3b4942;
+  --chrome: #222d28;
+  --input: #1b2520;
+  --hover: #293a31;
+  --focus: #80d1c4;
+  --danger: #ff9b9b;
+  --series-input: #81baff;
+  --series-output: #bea3ff;
+  --series-read: #61d5bd;
+  --series-write: #ffbd73;
+}
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+body { margin: 0; background: var(--paper); color: var(--ink); }
+main { width: min(100%, 1280px); margin: auto; padding: clamp(14px, 3vw, 36px); }
+h1, h2, p { margin: 0; }
+h1, h2, strong { color: var(--strong); }
+h1 { font-size: clamp(24px, 4vw, 36px); font-weight: 680; letter-spacing: -.025em; }
+h2 { font-size: 16px; font-weight: 650; }
+.page-header, .panel-header { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px 16px; }
+.page-header p, .subtle { color: var(--muted); font-size: 13px; }
+.filters { display: flex; flex-wrap: wrap; align-items: end; gap: 10px; margin-top: 22px; }
+label { display: grid; gap: 4px; font-weight: 550; }
+.model-filter { flex: 0 1 340px; min-width: 140px; }
+button, input, select {
+  min-height: 36px;
+  border: 1px solid var(--line);
+  border-radius: 7px;
+  padding: 6px 10px;
+  background: var(--input);
+  color: var(--ink);
+  font: inherit;
+}
+button { cursor: pointer; font-weight: 600; }
+button:hover:not(:disabled) { background: var(--hover); }
+:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+:disabled { opacity: .6; cursor: default; }
+#model-hint { margin-top: 8px; }
+#status { min-height: 19px; margin: 12px 0; }
+#status.error { color: var(--danger); }
+.metrics { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 145px), 1fr)); gap: 9px; }
+.metric, .panel { border: 1px solid var(--line); border-radius: 10px; background: var(--chrome); }
+.metric { padding: 12px 14px; border-top: 3px solid var(--series, var(--line)); }
+.metric span { display: block; font-size: 13px; }
+.metric strong { display: block; font-size: clamp(18px, 2.6vw, 27px); font-variant-numeric: tabular-nums; overflow-wrap: anywhere; }
+.input { --series: var(--series-input); }
+.output { --series: var(--series-output); }
+.read { --series: var(--series-read); }
+.write { --series: var(--series-write); }
+.formula { margin: 8px 0 16px; }
+.panel { margin-bottom: 14px; }
+.panel-header { padding: 13px 16px; }
+.legend { display: flex; flex-wrap: wrap; gap: 5px 12px; margin: 0; padding: 0; list-style: none; font-size: 12px; }
+.legend li::before { content: ""; display: inline-block; margin-inline-end: 5px; width: 8px; height: 8px; border-radius: 50%; background: var(--series); }
+.plot { position: relative; margin: 0 10px; }
+canvas { display: block; width: 100%; height: 218px; }
+.chart-detail {
+  position: absolute; inset-block-start: 6px; z-index: 1;
+  padding: 8px 10px; white-space: pre-line; pointer-events: none;
+  background: var(--chrome); border: 1px solid var(--line); border-radius: 7px;
+  font-size: 12px; font-variant-numeric: tabular-nums;
+}
+details { border-top: 1px solid var(--line); }
+summary { padding: 10px 16px; cursor: pointer; }
+.table-scroll { overflow: auto; }
+table { width: 100%; border-collapse: collapse; font-variant-numeric: tabular-nums; text-align: start; }
+th, td { padding: 8px 12px; border-top: 1px solid var(--line); text-align: start; white-space: nowrap; }
+th { font-size: 12px; color: var(--muted); background: var(--paper); }
+td.numeric, th.numeric { text-align: end; }
+tbody tr:hover { background: var(--hover); }
+.empty { padding: 16px; border-top: 1px solid var(--line); }
+.pagination { display: flex; gap: 10px; align-items: center; justify-content: flex-end; flex-wrap: wrap; padding: 10px 16px; border-top: 1px solid var(--line); }
