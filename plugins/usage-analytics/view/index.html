@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Usage Analytics</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <main>
+    <header class="page-header">
+      <div>
+        <h1 data-label="title">Usage Analytics</h1>
+        <p data-label="scope">Claude Code usage recorded in this environment</p>
+      </div>
+      <button id="refresh" type="button" data-label="refresh" disabled>Refresh</button>
+    </header>
+    <div class="filters">
+      <label><span data-label="period">Period</span>
+        <select id="days" disabled>
+          <option value="1" data-label="today">Today</option>
+          <option value="7" data-label="days7" selected>Last 7 days</option>
+          <option value="30" data-label="days30">Last 30 days</option>
+          <option value="90" data-label="days90">Last 90 days</option>
+        </select>
+      </label>
+      <label class="model-filter"><span data-label="model">Model</span>
+        <input id="model" type="text" list="models" maxlength="128" autocomplete="off" disabled>
+        <datalist id="models"></datalist>
+      </label>
+      <button id="apply" type="button" data-label="apply" disabled>Apply</button>
+    </div>
+    <p id="model-hint" class="subtle" hidden data-label="modelHint">200 models shown. You can enter any exact model ID.</p>
+    <p id="status" class="subtle" role="status" aria-live="polite"></p>
+    <div id="report" hidden>
+      <section class="metrics" aria-label="Usage totals" id="metrics">
+        <div class="metric input"><span data-label="input">Fresh input</span><strong id="total-input"></strong></div>
+        <div class="metric output"><span data-label="output">Output</span><strong id="total-output"></strong></div>
+        <div class="metric read"><span data-label="read">Cache read</span><strong id="total-read"></strong></div>
+        <div class="metric write"><span data-label="write">Cache creation</span><strong id="total-write"></strong></div>
+        <div class="metric"><span data-label="rate">Cache hit rate</span><strong id="total-cache_hit_rate"></strong></div>
+        <div class="metric"><span data-label="requests">Requests</span><strong id="total-requests"></strong></div>
+      </section>
+      <p class="subtle formula" data-label="formula">Cache hit rate = cache read ÷ (fresh input + cache read + cache creation).</p>
+      <section class="panel" aria-labelledby="trend-title">
+        <div class="panel-header">
+          <h2 id="trend-title" data-label="trend">Daily trend</h2>
+          <ul class="legend">
+            <li class="input" data-label="input">Fresh input</li>
+            <li class="output" data-label="output">Output</li>
+            <li class="read" data-label="read">Cache read</li>
+            <li class="write" data-label="write">Cache creation</li>
+          </ul>
+        </div>
+        <div class="plot">
+          <canvas id="chart" aria-hidden="true"></canvas>
+          <div id="chart-detail" class="chart-detail" aria-hidden="true" hidden></div>
+        </div>
+        <details>
+          <summary data-label="dailyValues">Daily values</summary>
+          <div class="table-scroll" tabindex="0">
+            <table aria-labelledby="trend-title"><thead><tr id="trend-headers"></tr></thead><tbody id="trend-rows"></tbody></table>
+          </div>
+        </details>
+      </section>
+      <section class="panel" aria-labelledby="logs-title">
+        <div class="panel-header">
+          <div>
+            <h2 id="logs-title" data-label="logs">Request records</h2>
+            <p class="subtle" data-label="logNote">Records come from deduplicated usage counters.</p>
+          </div>
+        </div>
+        <div id="log-table" class="table-scroll" tabindex="0">
+          <table aria-labelledby="logs-title"><thead><tr id="log-headers"></tr></thead><tbody id="logs"></tbody></table>
+        </div>
+        <p class="empty" id="empty" data-label="empty" hidden>No requests for these filters.</p>
+        <nav id="pagination" class="pagination" aria-label="Pages">
+          <button id="previous" type="button" data-label="previous">Previous</button>
+          <span id="page"></span>
+          <button id="next" type="button" data-label="next">Next</button>
+        </nav>
+      </section>
+    </div>
+  </main>
+</body>
+</html>

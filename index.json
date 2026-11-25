@@ -1759,6 +1759,112 @@
       "bytes": 12914
     },
     {
+      "name": "usage-analytics",
+      "version": "0.1.0",
+      "description": "Explore local token usage, cache efficiency, daily trends and request records.",
+      "permissions": [],
+      "author": {
+        "name": "Thee-13"
+      },
+      "i18n": {
+        "zh-CN": {
+          "displayName": "用量分析",
+          "description": "查看本地 Token 用量、缓存命中率、每日趋势和请求记录。"
+        },
+        "zh-TW": {
+          "displayName": "用量分析",
+          "description": "查看本機 Token 用量、快取命中率、每日趨勢和請求記錄。"
+        },
+        "ko": {
+          "displayName": "사용량 분석",
+          "description": "로컬 토큰 사용량, 캐시 적중률, 일별 추세 및 요청 기록을 확인합니다."
+        },
+        "es": {
+          "displayName": "Análisis de uso",
+          "description": "Consulta el uso local de tokens, la tasa de aciertos de caché, las tendencias diarias y el registro de solicitudes."
+        },
+        "ru": {
+          "displayName": "Анализ использования",
+          "description": "Показывает локальный расход токенов, долю попаданий в кэш, ежедневную динамику и журнал запросов."
+        },
+        "my": {
+          "displayName": "အသုံးပြုမှု ဆန်းစစ်ချက်",
+          "description": "စက်တွင်း တိုကင်အသုံးပြုမှု၊ ကက်ရှ်ထိနှုန်း၊ နေ့စဉ်ပြောင်းလဲမှုနှင့် တောင်းဆိုမှုမှတ်တမ်းများကို ကြည့်ပါ။"
+        },
+        "ar": {
+          "displayName": "تحليل الاستخدام",
+          "description": "اعرض استخدام الرموز المحلي ونسبة إصابات ذاكرة التخزين المؤقت والاتجاهات اليومية وسجل الطلبات."
+        },
+        "be": {
+          "displayName": "Аналіз выкарыстання",
+          "description": "Паказвае лакальны расход токенаў, долю трапленняў у кэш, штодзённыя тэндэнцыі і журнал запытаў."
+        },
+        "fa": {
+          "displayName": "تحلیل مصرف",
+          "description": "مصرف محلی توکن، نرخ اصابت حافظهٔ نهان، روندهای روزانه و سوابق درخواست‌ها را ببینید."
+        },
+        "ps": {
+          "displayName": "د کارونې شننه",
+          "description": "د توکنونو سیمه‌ییزه کارونه، د زېرمې د موندنې کچه، ورځني بدلونونه او د غوښتنو ثبت وګورئ."
+        },
+        "prs": {
+          "displayName": "تحلیل استفاده",
+          "description": "مصرف محلی توکن‌ها، نرخ یافتن در حافظهٔ نهان، روندهای روزانه و سوابق درخواست‌ها را ببینید."
+        },
+        "am": {
+          "displayName": "የአጠቃቀም ትንተና",
+          "description": "የአካባቢ ቶከን አጠቃቀምን፣ የመሸጎጫ ስኬት መጠንን፣ ዕለታዊ አዝማሚያዎችን እና የጥያቄ መዝገቦችን ይመልከቱ።"
+        },
+        "so": {
+          "displayName": "Falanqaynta isticmaalka",
+          "description": "Eeg isticmaalka maxalliga ah ee tokennada, heerka ku dhicista kaydka, isbeddellada maalinlaha ah iyo diiwaanka codsiyada."
+        },
+        "ti": {
+          "displayName": "ትንተና ኣጠቓቕማ",
+          "description": "ኣጠቓቕማ ቶከን፣ መጠን ምርካብ ኣብ መኽዘን፣ መዓልታዊ ኣንፈትን መዝገብ ሕቶታትን ርአ።"
+        },
+        "fr": {
+          "displayName": "Analyse de l’utilisation",
+          "description": "Consultez l’utilisation locale des jetons, le taux de réussite du cache, les tendances quotidiennes et le journal des requêtes."
+        }
+      },
+      "displayName": "Usage Analytics",
+      "categories": [
+        "developer",
+        "system"
+      ],
+      "kind": "guest",
+      "engines": {
+        "cage": ">=0.2.0"
+      },
+      "contributes": {
+        "mcpServers": [
+          {
+            "id": "analytics",
+            "command": [
+              "python3",
+              "-B",
+              "server.py"
+            ]
+          }
+        ],
+        "views": [
+          {
+            "id": "analytics",
+            "title": "Usage Analytics",
+            "icon": "icon.svg",
+            "entry": "view/index.html",
+            "server": "analytics"
+          }
+        ]
+      },
+      "runtime": "python3",
+      "icon": "https://raw.githubusercontent.com/Lee-xeo/cage-plugins/main/plugins/usage-analytics/icon.svg",
+      "archive": "https://raw.githubusercontent.com/Lee-xeo/cage-plugins/main/dist/usage-analytics-0.1.0.tar.gz",
+      "sha256": "07fbc1f905e027d9ffe99a84e6231024c57542deb160e8ebeabdc72a52ad586f",
+      "bytes": 15351
+    },
+    {
       "name": "web-fetch",
       "version": "0.1.2",
       "description": "Fetches web pages and converts HTML content to clean Markdown for reading, with pagination and robots.txt support.",
